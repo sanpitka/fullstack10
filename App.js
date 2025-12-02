@@ -1,8 +1,18 @@
 import React from 'react';
 import Main from './src/components/Main';
+import { NativeRouter } from 'react-router-native';
+import { StatusBar } from 'react-native-web';
+
 
 const App = () => {
-  return <Main />;
+  return (
+    <>
+      <NativeRouter>
+        <Main />
+      </NativeRouter>
+      <StatusBar barStyle="auto" />
+    </>
+  );
 };
 
 export default App;
