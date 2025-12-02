@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     marginTop: Constants.statusBarHeight,
     flexGrow: 1,
     flexShrink: 1,
+    backgroundColor: 'lightgray',
   },
 });
 
@@ -16,7 +17,6 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <Text>Rate Repository Application</Text>
       <RepositoryList />
     </View>
   );
