@@ -1,9 +1,10 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 import * as yup from 'yup';
 
 import theme from '../theme';
+import Text from './Text';
 
 const styles = {
   container: {
