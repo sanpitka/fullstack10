@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Pressable } from 'react-native';
+import theme from '../theme';
 
 const styles = {
   container: {
@@ -15,7 +16,7 @@ const styles = {
     padding: 8,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: theme.colors.primary,
     padding: 15,
     borderRadius: 4,
     alignItems: 'center',
