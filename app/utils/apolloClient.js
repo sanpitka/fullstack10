@@ -1,9 +1,14 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import Constants from 'expo-constants';
+
+const APOLLO_URI = Constants.expoConfig.extra.APOLLO_URI;
+
 
 const createApolloClient = () => {
+  console.log("Apollo URI:", APOLLO_URI);
   return new ApolloClient({
     link: new HttpLink({
-      uri: 'http://192.168.0.62:4000/graphql',
+      uri: APOLLO_URI,
     }),
     cache: new InMemoryCache(),
   });

@@ -29,12 +29,12 @@ const AppBar = () => {
   return (
   <View style={styles.container}>
     <ScrollView horizontal>
-      <Pressable>
+      <Pressable key="repositories">
         <Link to="/">
           <Text style={styles.tab}>Repositories</Text>
         </Link>
       </Pressable>
-      <Pressable>
+      <Pressable key="signin">
         <Link to="/signin">
           <Text style={styles.tab}>Sign In</Text>
         </Link>
