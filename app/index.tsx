@@ -1,16 +1,17 @@
+import { ApolloProvider } from "@apollo/client/react";
 import { NativeRouter } from "react-router-native";
 
 import Main from "./Main";
-//import createApolloClient from "./utils/apolloClient";
+import createApolloClient from "./utils/apolloClient";
 
-//const apolloClient = createApolloClient();
+const apolloClient = createApolloClient();
 
 export default function Index() {
   return (
     <NativeRouter>
-      {/* <ApolloProvider client={apolloClient}> */}
+      <ApolloProvider client={apolloClient}>
         <Main />
-      {/* </ApolloProvider> */}
+      </ApolloProvider>
     </NativeRouter>
   );
 }
