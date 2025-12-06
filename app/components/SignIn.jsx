@@ -3,6 +3,7 @@ import React from 'react';
 import { Pressable, TextInput, View } from 'react-native';
 import * as yup from 'yup';
 
+import { useNavigate } from 'react-router-native';
 import useSignIn from '../hooks/useSignIn';
 import theme from '../theme';
 import Text from './Text';
@@ -48,6 +49,7 @@ const validationSchema = yup.object().shape({
 
 const SignIn = () => {
   const [signIn] = useSignIn();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -60,6 +62,7 @@ const SignIn = () => {
         const data = await signIn(values);
         console.log(data);
         formik.resetForm();
+        navigate('/');
       } catch (e) {
         console.log(e);
       }
