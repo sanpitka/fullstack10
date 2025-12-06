@@ -4,6 +4,7 @@ export default{
   expo: {
     name: "rate-repository-app",
     slug: "rate-repository-app",
+    scheme: "rate-repository-app",
     plugins: [
       "expo-router",
       "expo-web-browser"
