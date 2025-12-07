@@ -88,21 +88,11 @@ const RepositoryItem = ({ item }) => {
       </View>
     </View>
     {item.url &&
-      <View style={styles.buttonRow}>
-        <Pressable 
-          style={styles.pressable}
-          onPress={() => Linking.openURL(item.url)}>
+      <Pressable 
+        style={styles.pressable}
+        onPress={() => Linking.openURL(item.url)}>
         <Text style={{ color: 'white', textAlign: 'center' }}>Open in GitHub</Text>
-        </Pressable>
-        <Pressable
-          style={styles.pressable}
-          onPress={() => {
-            navigate(`/review/${item.id}`,
-            );
-          }}>
-          <Text style={{ color: 'white', textAlign: 'center' }}>Review</Text>
-        </Pressable>
-      </View>
+      </Pressable>
     }
     </View>
   );

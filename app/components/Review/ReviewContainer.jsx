@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import ReviewForm from './ReviewForm';
 
 const validationSchema = yup.object().shape({
-  ownerName: yup.string().required('Username is required'),
+  ownerName: yup.string().required('Repository owner name is required'),
   repositoryName: yup.string().required('Repository name is required'),
   rating: yup
     .number()

@@ -25,7 +25,7 @@ export default function Main() {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/repository/:id" element={<RepositoryInfo />} />
-        <Route path="/review/:id" element={<Review />} />
+        <Route path="/review" element={<Review />} />
       </Routes>
     </View>
   );
