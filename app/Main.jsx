@@ -6,6 +6,7 @@ import RepositoryInfo from "./components/Repositories/RepositoryInfo";
 import RepositoryList from "./components/Repositories/RepositoryList";
 import Review from "./components/Review";
 import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
 import theme from "./theme";
 
@@ -24,6 +25,7 @@ export default function Main() {
       <Routes>
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/repository/:id" element={<RepositoryInfo />} />
         <Route path="/review" element={<Review />} />
       </Routes>

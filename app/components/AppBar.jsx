@@ -49,11 +49,18 @@ const AppBar = () => {
         </Link>
       </Pressable>
       {!user ? (
-      <Pressable key="signin">
-        <Link to="/signin">
-          <Text style={styles.tab}>Sign In</Text>
-        </Link>
-      </Pressable>
+      <>
+        <Pressable key="signin">
+          <Link to="/signin">
+            <Text style={styles.tab}>Sign In</Text>
+          </Link>
+        </Pressable>
+        <Pressable key="signup">
+          <Link to="/signup">
+            <Text style={styles.tab}>Sign Up</Text>
+          </Link>
+        </Pressable>
+      </>
         ) : (
       <>
         <Pressable key="review">
