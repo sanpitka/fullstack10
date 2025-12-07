@@ -1,7 +1,8 @@
-import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
 import { useParams } from 'react-router-native';
-import useRepository from '../hooks/useRepository';
-import theme from '../theme';
+import useRepository from '../../hooks/useRepository';
+import theme from '../../theme';
+import Text from '../Text';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({

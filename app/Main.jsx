@@ -2,8 +2,9 @@ import { StyleSheet, View } from "react-native";
 import { Route, Routes } from "react-router-native";
 
 import AppBar from "./components/AppBar";
-import RepositoryInfo from "./components/RepositoryInfo";
-import RepositoryList from "./components/RepositoryList";
+import RepositoryInfo from "./components/Repositories/RepositoryInfo";
+import RepositoryList from "./components/Repositories/RepositoryList";
+import Review from "./components/Review";
 import SignIn from "./components/SignIn";
 
 import theme from "./theme";
@@ -24,6 +25,7 @@ export default function Main() {
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/repository/:id" element={<RepositoryInfo />} />
+        <Route path="/review/:id" element={<Review />} />
       </Routes>
     </View>
   );

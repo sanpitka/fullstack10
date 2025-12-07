@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, Linking, Pressable, StyleSheet, View } from 'react-native';
-import theme from '../theme';
-import Text from './Text';
+import { useNavigate } from 'react-router-native';
+import theme from '../../theme';
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,6 +16,12 @@ const styles = StyleSheet.create({
   bottomRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
+    paddingTop: 10,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
     paddingTop: 10,
   },
   avatar: {
@@ -36,6 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     padding: 10,
     borderRadius: 4,
+    flex: 1,
   },
 });
 
@@ -47,6 +55,8 @@ const roundToThousands = (num) => {
 };
 
 const RepositoryItem = ({ item }) => {
+  const navigate = useNavigate();
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -78,11 +88,19 @@ const RepositoryItem = ({ item }) => {
       </View>
     </View>
     {item.url &&
-      <View style={styles.container}>
+      <View style={styles.buttonRow}>
         <Pressable 
           style={styles.pressable}
           onPress={() => Linking.openURL(item.url)}>
         <Text style={{ color: 'white', textAlign: 'center' }}>Open in GitHub</Text>
+        </Pressable>
+        <Pressable
+          style={styles.pressable}
+          onPress={() => {
+            navigate(`/review/${item.id}`,
+            );
+          }}>
+          <Text style={{ color: 'white', textAlign: 'center' }}>Review</Text>
         </Pressable>
       </View>
     }
