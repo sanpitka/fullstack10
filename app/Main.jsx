@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import { Route, Routes } from "react-router-native";
 
 import AppBar from "./components/AppBar";
+import RepositoryDetails from "./components/RepositoryDetails";
 import RepositoryList from "./components/RepositoryList";
 import SignIn from "./components/SignIn";
 
@@ -22,6 +23,7 @@ export default function Main() {
       <Routes>
         <Route path="/" element={<RepositoryList />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/repository/:id" element={<RepositoryDetails />} />
       </Routes>
     </View>
   );

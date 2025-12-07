@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Linking, Pressable, StyleSheet, View } from 'react-native';
 import theme from '../theme';
 import Text from './Text';
 
@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginLeft: 60,
   },
+  pressable: {
+    backgroundColor: theme.colors.primary,
+    padding: 10,
+    borderRadius: 4,
+  },
 });
 
 const roundToThousands = (num) => {
@@ -43,7 +48,7 @@ const roundToThousands = (num) => {
 
 const RepositoryItem = ({ item }) => {
   return (
-    <View style={styles.container} testID="repositoryItem">
+    <View style={styles.container}>
       <View style={styles.row}>
         <Image source={{ uri: item.ownerAvatarUrl }} style={styles.avatar} />
         <View style={{ flex: 1 }}>
@@ -72,6 +77,15 @@ const RepositoryItem = ({ item }) => {
         <Text>Rating</Text>
       </View>
     </View>
+    {item.url &&
+      <View style={styles.container}>
+        <Pressable 
+          style={styles.pressable}
+          onPress={() => Linking.openURL(item.url)}>
+        <Text style={{ color: 'white', textAlign: 'center' }}>Open in GitHub</Text>
+        </Pressable>
+      </View>
+    }
     </View>
   );
 };
