@@ -50,9 +50,9 @@ const validationSchema = yup.object().shape({
 
 
 const SignUpContainer = ({ onSubmit }) => {
-  
+
   const handleSubmit = ({ username, password }) => {
-    onSubmit({ username, password });
+    onSubmit({ username, password });    
   };
 
   const formik = useFormik({
