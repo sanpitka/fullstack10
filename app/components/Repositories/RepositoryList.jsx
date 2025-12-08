@@ -1,6 +1,8 @@
 import { FlatList, StyleSheet, View } from 'react-native';
 import { Link } from 'react-router-native';
 import useRepositories from '../../hooks/useRepositories';
+import useSorter from '../../hooks/useSorter';
+import Sorter from '../Sorter';
 import RepositoryItem from './RepositoryItem';
 
 const styles = StyleSheet.create({
@@ -33,10 +35,14 @@ const RepositoryListContainer = ({ repositories }) => {
 export { RepositoryListContainer };
 
 const RepositoryList = () => {
-  const { repositories } = useRepositories();
+  const { sorter, setSorter, orderBy, orderDirection } = useSorter();
+  const { repositories } = useRepositories({ orderBy, orderDirection });
 
   return (
-    <RepositoryListContainer repositories={repositories} />
+    <View>
+      <Sorter sorter={sorter} setSorter={setSorter} />
+      <RepositoryListContainer repositories={repositories} />
+    </View>
   );
 };
 
