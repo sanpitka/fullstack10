@@ -50,7 +50,7 @@ const ReviewForm = ({
 }) => (
   <View style={styles.container}>
     <TextInput
-      placeholder="Username"
+      placeholder="Repository owner name"
       style={[
         styles.input,
         touched.ownerName && errors.ownerName ? { borderColor: theme.colors.errorColor } : null

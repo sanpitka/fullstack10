@@ -5,6 +5,7 @@ import AppBar from "./components/AppBar";
 import RepositoryInfo from "./components/Repositories/RepositoryInfo";
 import RepositoryList from "./components/Repositories/RepositoryList";
 import Review from "./components/Review";
+import MyReviews from "./components/Review/MyReviews";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 
@@ -28,6 +29,7 @@ export default function Main() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/repository/:id" element={<RepositoryInfo />} />
         <Route path="/review" element={<Review />} />
+        <Route path="/myreviews" element={<MyReviews />} />
       </Routes>
     </View>
   );
