@@ -1,6 +1,5 @@
 import React from 'react';
 import { Image, Linking, Pressable, StyleSheet, View } from 'react-native';
-import { useNavigate } from 'react-router-native';
 import theme from '../../theme';
 import Text from '../Text';
 
@@ -55,7 +54,6 @@ const roundToThousands = (num) => {
 };
 
 const RepositoryItem = ({ item }) => {
-  const navigate = useNavigate();
 
   return (
     <View style={styles.container}>
