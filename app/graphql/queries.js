@@ -1,97 +1,58 @@
 import { gql } from '@apollo/client';
-
-export const GET_REPOSITORIES = gql`
-  query Repositories {
-    repositories {
-      edges {
-        node {
-          id
-          ownerAvatarUrl
-          fullName
-          description
-          language
-          stargazersCount
-          forksCount
-          reviewCount
-          ratingAverage        
-        }
-      }           
-    }
-  }
-`;
+import { REPOSITORY_DETAILS, REVIEW_DETAILS, USER_DETAILS } from './fragments';
 
 export const GET_REPOSITORIES_SORTED = gql`
   query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String) {
     repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $searchKeyword) {
       edges {
         node { 
-          id
-          ownerAvatarUrl
-          fullName
-          description
-          language
-          stargazersCount
-          forksCount
-          reviewCount
-          ratingAverage        
+          ...RepositoryDetails      
         }
       }           
     }
   }
+  ${REPOSITORY_DETAILS}
 `;
 
 export const ME = gql`
   query Me {
     me {
-      id
-      username
+      ...UserDetails
     }
   }
+  ${USER_DETAILS}
 `;
 
 export const GET_REPOSITORY = gql`
   query Repository($id: ID!) {
     repository(id: $id) {
-      id
-      ownerAvatarUrl
-      fullName
-      description
-      language
-      stargazersCount
-      forksCount
-      reviewCount
-      ratingAverage
+      ...RepositoryDetails
       url
       reviews {
         edges {
           node {
-            id
-            text
-            rating
-            createdAt
+            ...ReviewDetails
             user {
-              id
-              username
+              ...UserDetails
             }
           }
         }
       }
     }
   }
+  ${REPOSITORY_DETAILS}
+  ${REVIEW_DETAILS}
+  ${USER_DETAILS}
 `;
 
 export const GET_CURRENT_USER = gql`
   query Me($includeReviews: Boolean = false) {
     me {
-      id
-      username
+      ...UserDetails
       reviews @include(if: $includeReviews) {
         edges {
           node {
-            id
-            text
-            rating
-            createdAt
+            ...ReviewDetails
             repository {
               id
               fullName
@@ -100,5 +61,13 @@ export const GET_CURRENT_USER = gql`
         }
       }
     }
+  }
+  ${REVIEW_DETAILS}
+  ${USER_DETAILS}
+`;
+
+export const DELETE_REVIEW = gql`
+  mutation DeleteReview($id: ID!) {
+    deleteReview(id: $id)
   }
 `;
