@@ -64,7 +64,7 @@ const RepositoryList = () => {
   });
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <RepositoryListHeader
         searchKeyword={searchKeyword}
         setSearchKeyword={setSearchKeyword}
