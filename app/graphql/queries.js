@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { REPOSITORY_DETAILS, REVIEW_DETAILS, USER_DETAILS } from './fragments';
+import { PAGEINFO_DETAILS, REPOSITORY_DETAILS, REVIEW_DETAILS, USER_DETAILS } from './fragments';
 
 export const GET_REPOSITORIES_SORTED = gql`
   query Repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $searchKeyword: String) {
@@ -24,11 +24,11 @@ export const ME = gql`
 `;
 
 export const GET_REPOSITORY = gql`
-  query Repository($id: ID!) {
+  query Repository($id: ID!, $first: Int, $after: String) {
     repository(id: $id) {
       ...RepositoryDetails
       url
-      reviews {
+      reviews(first: $first, after: $after) {
         edges {
           node {
             ...ReviewDetails
@@ -36,13 +36,18 @@ export const GET_REPOSITORY = gql`
               ...UserDetails
             }
           }
+          cursor
         }
+        pageInfo {
+          ...PageInfoDetails
+        }  
       }
     }
   }
   ${REPOSITORY_DETAILS}
   ${REVIEW_DETAILS}
   ${USER_DETAILS}
+  ${PAGEINFO_DETAILS}
 `;
 
 export const GET_CURRENT_USER = gql`

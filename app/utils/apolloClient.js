@@ -1,8 +1,24 @@
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 import { SetContextLink } from '@apollo/client/link/context';
+import { relayStylePagination } from '@apollo/client/utilities';
 import Constants from 'expo-constants';
 
 const APOLLO_URI = Constants.expoConfig.extra.APOLLO_URI;
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        repositories: relayStylePagination(),
+      },
+    },
+    Repository: {
+      fields: {
+        reviews: relayStylePagination(),
+      },
+    },
+  },
+});
 
   const createApolloClient = (authStorage) => {
   const authLink = new SetContextLink(async (_, { headers }) => {
@@ -29,7 +45,7 @@ const APOLLO_URI = Constants.expoConfig.extra.APOLLO_URI;
         uri: APOLLO_URI,
       })
     ),
-    cache: new InMemoryCache(),
+    cache
   });
 };
 
